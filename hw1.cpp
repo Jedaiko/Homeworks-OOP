@@ -17,7 +17,7 @@ class Power
         };
         void Calculate()
         {
-            cout << pow(num1,num2);
+            cout << pow(num1,num2) <<endl;
         };
 
         
@@ -41,7 +41,7 @@ class RGBA
 
         void print()
         {
-            cout << unsigned(m_red) << ", " << unsigned(m_green) << ", " << unsigned(m_blue) << ", " << unsigned(m_alpha);  
+            cout << unsigned(m_red) << ", " << unsigned(m_green) << ", " << unsigned(m_blue) << ", " << unsigned(m_alpha) << endl;  
         }
         
 
@@ -89,17 +89,20 @@ class Stack
 int main()
 {   
     // Task 1
- //   Power power;
- //   power.num1 = 5;
- //   power.num2 = 3;
- //   power.SetNumber();
- //   power.Calculate();
+    cout << "Task1" << endl;
+    Power power;
+    power.num1 = 10;
+    power.num2 = 3;
+    power.SetNumber();
+    power.Calculate();
 
     //Task2
- //   RGBA rgba(10, 35, 0, 200);
- //   rgba.print();
+    cout << "Task2" << endl;
+    RGBA rgba(10, 35, 0, 200);
+    rgba.print();
 
     //Task3
+    cout << "Task3" << endl;
     Stack stack;
     stack.reset();
  
