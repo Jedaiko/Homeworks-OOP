@@ -7,25 +7,25 @@ using namespace std;
 class Figure
 {
     protected:
-        int m_a;
-        int m_b;
-        int m_r;
-        const float m_pi = 3.14;
-        int m_angle;
         
+        
+        const float m_pi = 3.14;
+       
     public:
-        Figure (int a, int b, int r, int angle)
-            :m_a(a), m_b(b), m_r(r), m_angle(angle){}
         
     virtual void area() = 0;
 };
 class Parallelogramm : public Figure
 {
+    protected:
+        int m_a;
+        int m_b;
+        int m_angle;
     public:
 
         int S = m_a*m_b*sin(m_angle*m_pi/180); 
-        Parallelogramm (int a, int b, int r, int angle)
-            :Figure(a, b, r, angle){}
+        Parallelogramm (int a, int b, int angle)
+            :m_a(a), m_b(b), m_angle(angle) {}
         
         virtual void area()
         {
@@ -35,11 +35,13 @@ class Parallelogramm : public Figure
 };
 class Circle : public Figure
 {
+    protected:
+    int m_r;
     public:
 
         float S = m_pi*pow(m_r,2); 
-        Circle (int a, int b, int r, int angle)
-            :Figure(a, b, r, angle){}
+        Circle (int r)
+            :m_r(r) {}
         
         virtual void area()
         {
@@ -51,8 +53,8 @@ class Rectangle : public Parallelogramm
     public:
 
         int S = m_a*m_b; 
-        Rectangle (int a, int b, int r, int angle)
-            :Parallelogramm(a, b, r, angle){}
+        Rectangle (int a, int b, int angle)
+            :Parallelogramm(a, b, angle){}
         
         virtual void area()
         {
@@ -64,8 +66,8 @@ class Square : public Parallelogramm
 {
     public:    
         int S = pow(m_a,2); 
-        Square (int a, int b, int r, int angle)
-            :Parallelogramm(a, b, r, angle){}
+        Square (int a, int b, int angle)
+            :Parallelogramm(a, b, angle){}
         
         virtual void area()
         {
@@ -76,8 +78,8 @@ class Rhombus : public Parallelogramm
 {
     public:    
         int S = pow(m_a,2)*sin(m_angle*m_pi/180); 
-        Rhombus (int a, int b, int r, int angle)
-            :Parallelogramm(a, b, r, angle){}
+        Rhombus (int a, int b, int angle)
+            :Parallelogramm(a, b, angle){}
         
         virtual void area()
         {
@@ -288,11 +290,11 @@ class Card
 void Task1()
 {
     cout << "Task1" << endl; 
-    Parallelogramm par(10,5,6,50);
-    Circle circle(10,5,6,60);
-    Rectangle rect(10,4,3,30);
-    Square square(20,3,5,30);
-    Rhombus rhombus(6,1,5,40);
+    Parallelogramm par(10,5,50);
+    Circle circle(6);
+    Rectangle rect(10,4,30);
+    Square square(20,3,30);
+    Rhombus rhombus(6,1,40);
 
     par.area();
     circle.area();
